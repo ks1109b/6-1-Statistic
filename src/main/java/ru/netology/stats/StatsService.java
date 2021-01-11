@@ -13,15 +13,12 @@ public class StatsService {
     }
 
     public long averageSales(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        return sum / sales.length;
+
+        return sumSales(sales) / sales.length;
     }
 
     public ArrayList<Integer> monthOfTopSales(long[] sales) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
 
         long topSale = sales[0];
         for (long sale : sales) {
@@ -53,17 +50,10 @@ public class StatsService {
 
     public int belowAverageMonths(long[] sales) {
 
-        long sum = 0;
-
-        for (long sale : sales) {
-            sum += sale;
-        }
-
-        long averageSales = sum / sales.length;
         int belowMonth = 0;
 
         for (long sale : sales) {
-            if (sale < averageSales) {
+            if (sale < averageSales(sales)) {
                 belowMonth ++;
             }
         }
@@ -72,17 +62,10 @@ public class StatsService {
 
     public int aboveAverageMonths(long[] sales) {
 
-        long sum = 0;
-
-        for (long sale : sales) {
-            sum += sale;
-        }
-
-        long averageSales = sum / sales.length;
         int aboveMonth = 0;
 
         for (long sale : sales) {
-            if (sale > averageSales) {
+            if (sale > averageSales(sales)) {
                 aboveMonth ++;
             }
         }
